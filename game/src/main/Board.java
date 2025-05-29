@@ -14,12 +14,18 @@ public class Board {
 		setObject("s", map);  // slime
 		setObject("p", map);  // potion
 		setObject("e", map);  // ether
-		setObject("@", map);  // player
+		// setObject("@", map);  // player
 		printMap(map);
 	} // main() end
 	
 	public static void printMap(String[][] map) {
-		
+		for (int y = 0; y < 5; y++) {
+			System.out.print("|");
+			for (int x = 0; x < 5; x++) {
+				System.out.print(map[y][x] + "|");
+			}
+			System.out.println();
+		}
 	}
 		
     public static void setObject(String obj, String[][] map) {
