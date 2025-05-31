@@ -10,12 +10,44 @@ public class Player extends GameObject {
 	public Player(String name, char suffix) {
 		super(name, suffix);
 	}
+	
+	public char selectAction(Board board) {
+		System.out.print("M:移動 L:見る T:取る > ");
+		char select = new Scanner(System.in).next().charAt(0);
+		switch (select) {
+		case 'l' -> {
+			sight(board);
+		}
+		}
+		return '0';
+	}
+	
+	private void sight(Board board) {
+		char location = board.map[this.y][this.x];
+		switch (location) {
+			case '.' -> {
+				System.out.println("何も見当たりません");
+			}
+			case 'g' -> {
+				System.out.println("ゴブリンが現れた！");
+			}
+			case 's' -> {
+				System.out.println("スライムが現れた！");
+			}
+			case 'p' -> {
+				System.out.println("ポーションが落ちている");
+			}
+			case 'e' -> {
+				System.out.println("エーテルが落ちている");
+			}
+		}
+	}
 
 	public char move(Board board) {
 		char mode = 'm';  // m -- move
 		int y = this.y;
 		int x = this.x;
-		System.out.print("w:↑ s:↓ a:← d:→ q:終了");
+		System.out.print("W:↑ S:↓ A:← D:→ Q:終了 > ");
 		@SuppressWarnings("resource")
 		char dir = new Scanner(System.in).next().charAt(0);
 		switch (dir) {
