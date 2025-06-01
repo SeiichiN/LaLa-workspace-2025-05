@@ -11,18 +11,7 @@ public class Player extends GameObject {
 		super(name, suffix);
 	}
 	
-	public char selectAction(Board board) {
-		System.out.print("M:移動 L:見る T:取る > ");
-		char select = new Scanner(System.in).next().charAt(0);
-		switch (select) {
-		case 'l' -> {
-			sight(board);
-		}
-		}
-		return '0';
-	}
-	
-	private void sight(Board board) {
+	public void lookAround(Board board) {
 		char location = board.map[this.y][this.x];
 		switch (location) {
 			case '.' -> {
