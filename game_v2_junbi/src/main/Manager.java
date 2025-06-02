@@ -21,10 +21,11 @@ public class Manager {
 	
 	public void start() {
 		board.printMap(player);
-		selectAction();
-		
-		move();
-
+		while (true) {
+			char ch = selectAction();
+			if (ch == 'q') break;
+		}
+		System.out.println("ゲーム終了");
 	}
 	
 	public void setGameObject() {
@@ -42,15 +43,18 @@ public class Manager {
 	}
 	
 	public char selectAction() {
-		System.out.print("M:移動 L:見る T:取る > ");
+		System.out.print("M:移動 L:見る C:コマンド Q:終了 > ");
 		@SuppressWarnings("resource")
 		char select = new Scanner(System.in).next().charAt(0);
 		switch (select) {
-		case 'm' -> {
-			move();
-		}
+			case 'm' -> {
+				move();
+			}
 			case 'l' -> {
 				player.lookAround(board);
+			}
+			case 'c' -> {
+				
 			}
 		}
 		return '0';
